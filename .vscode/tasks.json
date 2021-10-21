@@ -1,0 +1,49 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+    {
+      "label": "webpack",
+      "type": "npm",
+      "script": "serve",
+      "detail": "wow",
+      "promptOnClose": true,
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "webpack",
+        "severity": "error",
+        "fileLocation": "absolute",
+        "pattern": [
+          {
+            "regexp": "ERROR in (.*)",
+            "file": 1
+          },
+          {
+            "regexp": "\\((\\d+),(\\d+)\\):(.*)",
+            "line": 1,
+            "column": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Project is running",
+          "endsPattern": "(Compiled successfully|Failed to compile)\\."
+        }
+      }
+    },
+    {
+      "label": "Terminate All Tasks",
+      "command": "echo ${input:terminate}",
+      "type": "shell",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "terminateAll"
+    }
+  ]
+}

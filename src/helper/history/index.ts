@@ -1,0 +1,1 @@
+export { historyInstance } from './history';
